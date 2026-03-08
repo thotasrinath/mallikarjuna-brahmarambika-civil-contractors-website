@@ -1,123 +1,146 @@
-# Docker Compose Setup with Ollama and Code-Server
+# Brahmarambika Mallikarjuna Construction Website
 
-A complete development environment with Ollama (local LLM) and code-server (web-based VS Code) running in Docker containers.
+A professional website for Brahmarambika Mallikarjuna Construction built with Nuxt Content and Tailwind CSS.
+
+## Project Structure
+
+```
+nuxt-website/
+├── app.vue              # Root app component
+├── nuxt.config.ts        # Nuxt configuration
+├── package.json          # Dependencies and scripts
+├── tailwind.config.js    # Tailwind configuration
+├── layouts/
+│   └── default.vue       # Default layout with header/footer
+├── pages/
+│   ├── index.vue         # Home page
+│   ├── about.vue         # About page
+│   ├── services.vue      # Services page
+│   ├── portfolio.vue     # Portfolio page
+│   └── contact.vue       # Contact page
+├── content/
+│   ├── index.md          # Home page content
+│   ├── about.md          # About page content
+│   ├── services.md       # Services page content
+│   ├── portfolio.md      # Portfolio page content
+│   └── contact.md       # Contact page content
+└── public/
+    └── images/           # Static assets
+```
 
 ## Features
 
-- **Ollama**: Run local LLMs with API access on port 11434
-- **Code-Server**: Full VS Code experience accessible via web browser on port 8080
-- **Persistent Storage**: Models and configuration persist across container restarts
-- **Network Connectivity**: Containers can communicate with each other
+- ✅ Responsive design with Tailwind CSS
+- ✅ Content management with Nuxt Content
+- ✅ Professional layout with header/footer
+- ✅ SEO optimized pages
+- ✅ Modern, clean design
+- ✅ Mobile-friendly navigation
 
-## Prerequisites
+## Getting Started
 
-- Docker installed on your system
-- Docker Compose installed
+### Prerequisites
 
-## Quick Start
+- Node.js (v18 or higher)
+- npm or yarn
 
-1. **Clone this repository**
+### Installation
+
+1. Install dependencies:
    ```bash
-   git clone <repository-url>
-   cd docker-opencode-ollama
+   npm install
    ```
 
-2. **Start the services**
+2. Start development server:
    ```bash
-   docker-compose up -d
+   npm run dev
    ```
 
-3. **Access the services**
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-   - **Code-Server (VS Code Web)**
-     - URL: http://localhost:8080
-     - Password: `admin123`
+### Building for Production
 
-   - **Ollama API**
-     - URL: http://localhost:11434
-     - API Documentation: http://localhost:11434/api
+```bash
+# Build the application
+npm run build
 
-## Usage
+# Preview the built application
+npm run preview
 
-### Managing Services
-
-- **Start services**: `docker-compose up -d`
-- **Stop services**: `docker-compose down`
-- **View logs**: `docker-compose logs -f`
-- **Rebuild and restart**: `docker-compose up -d --build`
-
-### Working with Ollama
-
-After starting the services, you can interact with Ollama:
-
-1. **Pull a model**:
-   ```bash
-   curl -X POST http://localhost:11434/api/pull -d '{
-     "name": "llama2"
-   }'
-   ```
-
-2. **Run a model**:
-   ```bash
-   curl -X POST http://localhost:11434/api/generate -d '{
-     "model": "llama2",
-     "prompt": "Why is the sky blue?",
-     "stream": false
-   }'
-   ```
-
-### Using Code-Server
-
-1. Open http://localhost:8080 in your browser
-2. Enter password: `admin123`
-3. Your workspace is mounted at `/home/coder/project`
-4. All files you create will be saved to the `workspace` directory on your host machine
-
-## File Structure
-
-```
-.
-├── docker-compose.yml     # Docker composition configuration
-├── README.md             # This file
-└── workspace/            # Your project files (created automatically)
+# Generate static site
+npm run generate
 ```
 
-## Configuration
+## Pages
 
-### Ollama Configuration
+### Home (`/`)
+- Hero section with call-to-action
+- Company overview and statistics
+- Service highlights
+- Featured projects
+- Client testimonials
 
-- Models are stored in the `ollama_models` Docker volume
-- API accessible at http://localhost:11434
-- Environment variables can be modified in `docker-compose.yml`
+### About (`/about`)
+- Company history and mission
+- Core values and philosophy
+- Team information
+- Certifications and achievements
 
-### Code-Server Configuration
+### Services (`/services`)
+- Residential construction
+- Commercial construction
+- Specialized services
+- Project management
+- Detailed service descriptions
 
-- Default password: `admin123` (change in docker-compose.yml)
-- Workspace mounted from host `./workspace` directory
-- Configuration stored in `code-server-config` Docker volume
+### Portfolio (`/portfolio`)
+- Featured projects showcase
+- Project categories
+- Client testimonials
+- Project statistics
 
-## Security Notes
+### Contact (`/contact`)
+- Contact information
+- Service areas
+- FAQs
+- Contact form guidance
 
-- Change the default password in production environments
-- Consider using HTTPS for remote access
-- The setup exposes ports 8080 and 11434 on localhost
+## Content Management
 
-## Troubleshooting
+All content is managed through Markdown files in the `content/` directory:
 
-### Port Conflicts
-If ports 8080 or 11434 are already in use, modify the port mappings in `docker-compose.yml`.
+- Edit `content/index.md` for home page content
+- Edit `content/about.md` for about page content
+- Edit `content/services.md` for services content
+- Edit `content/portfolio.md` for portfolio content
+- Edit `content/contact.md` for contact page content
 
-### Permission Issues
-If you encounter permission issues with mounted volumes, ensure the Docker user has appropriate permissions.
+## Customization
 
-### Model Downloads
-Ollama models can take time to download. Check the logs with `docker-compose logs ollama` to monitor progress.
+### Styling
+- Modify Tailwind configuration in `tailwind.config.js`
+- Custom CSS can be added as needed
 
-## Extending the Setup
+### Layout
+- Edit `layouts/default.vue` for header/footer changes
+- Modify `app.vue` for global app structure
 
-You can add additional services to the `docker-compose.yml` file, such as:
-- Database services (PostgreSQL, MySQL)
-- Web servers (nginx, Apache)
-- Other development tools
+### Pages
+- Each page has its own Vue file in `pages/` directory
+- Content is managed through corresponding Markdown files
 
-All services will be able to communicate through the `code-network`.
+## Deployment
+
+The website can be deployed to various platforms:
+
+### Static Hosting (recommended)
+- Deploy to Netlify, Vercel, or GitHub Pages
+- Generate static files with `npm run generate`
+
+### Node.js Hosting
+- Build with `npm run build`
+- Deploy `.output` directory to Node.js server
+
+## Support
+
+For any issues or questions about the website, contact the development team.
