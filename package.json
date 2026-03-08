@@ -1,0 +1,18 @@
+{
+  "name": "brahmarambika-construction",
+  "version": "1.0.0",
+  "description": "Website for Brahmarambika Mallikarjuna Construction Company",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.13.2",
+    "nuxt": "^3.13.1",
+    "@nuxtjs/tailwindcss": "^6.7.7"
+  }
+}
